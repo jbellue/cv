@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>Julien Bellue - CV</title>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.480/build/pdf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.480/build/pdf.worker.js"></script>
+	<style type="text/css">
+		.center{text-align: center; margin: 0 auto; width: auto; display:block;}
+		#pdf-canvas{margin-top:-60px;}
+		#menu {position:fixed;top:0;}
+		button{width:72px; padding:0;}
+	</style>
+</head>
+
+<body>
+	<div id="menu">
+		<div id="en-values">
+			<img id="fr-flag" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgZW5hYmxl
+			LWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwM
+			DAvc3ZnIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnJkZj0iaHR0cDovL3d3dy
+			53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PG1ldGFkYXRhPjxyZGY6UkRGPjxjYzpXb3JrIHJkZjphYm91dD0iIj48ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD48ZGM
+			6dHlwZSByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIi8+PGRjOnRpdGxlLz48L2NjOldvcms+PC9yZGY6UkRGPjwvbWV0YWRhdGE+PHBhdGggZD0iTTUx
+			MiwyNTZjMC0xMTAuMDcxLTY5LjQ3Mi0yMDMuOTA2LTE2Ni45NTctMjQwLjA3N3Y0ODAuMTU1QzQ0Mi41MjgsNDU5LjkwNiw1MTIsMzY2LjA3MSw1MTIsMjU2eiIgZmlsbD0iI2VkMjkzOSIvPjxwYXRoI
+			GQ9Ik0wLDI1NmMwLDExMC4wNzEsNjkuNDczLDIwMy45MDYsMTY2Ljk1NywyNDAuMDc3VjE1LjkyM0M2OS40NzMsNTIuMDk0LDAsMTQ1LjkyOSwwLDI1NnoiIGZpbGw9IiMwMDIzOTUiLz48L3N2Zz4="/>
+			<a href="./cv-en.pdf">Download</a>
+			<button id="prev-en">Previous</button>
+			<button id="next-en">Next</button>
+		</div>
+		<div id="fr-values" hidden>
+			<img id="uk-flag" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgZW5hYmxl
+			LWJhY2tncm91bmQ9Im5ldyAwIDAgNTEyIDUxMiIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwM
+			DAvc3ZnIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnJkZj0iaHR0cDovL3d3dy
+			53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+PG1ldGFkYXRhPjxyZGY6UkRGPjxjYzpXb3JrIHJkZjphYm91dD0iIj48ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD48ZGM
+			6dHlwZSByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIi8+PGRjOnRpdGxlLz48L2NjOldvcms+PC9yZGY6UkRGPjwvbWV0YWRhdGE+PGcgZmlsbD0iIzAw
+			NiI+PHBhdGggZD0ibTUyLjkyIDEwMC4xNGMtMjAuMTA5IDI2LjE2My0zNS4yNzIgNTYuMzE4LTQ0LjEwMSA4OS4wNzdoMTMzLjE4bC04OS4wNzctODkuMDc3eiIvPjxwYXRoIGQ9Im01MDMuMTggMTg5L
+			jIyYy04LjgyOS0zMi43NTgtMjMuOTkzLTYyLjkxMy00NC4xMDEtODkuMDc2bC04OS4wNzUgODkuMDc2aDEzMy4xOHoiLz48cGF0aCBkPSJtOC44MTkgMzIyLjc4YzguODMgMzIuNzU4IDIzLjk5MyA2Mi
+			45MTMgNDQuMTAxIDg5LjA3NWw4OS4wNzQtODkuMDc1aC0xMzMuMTh6Ii8+PHBhdGggZD0ibTQxMS44NiA1Mi45MjFjLTI2LjE2My0yMC4xMDktNTYuMzE3LTM1LjI3Mi04OS4wNzYtNDQuMTAydjEzMy4
+			xOGw4OS4wNzYtODkuMDc1eiIvPjxwYXRoIGQ9Im0xMDAuMTQgNDU5LjA4YzI2LjE2MyAyMC4xMDkgNTYuMzE4IDM1LjI3MiA4OS4wNzYgNDQuMTAydi0xMzMuMThsLTg5LjA3NiA4OS4wNzR6Ii8+PHBh
+			dGggZD0iTTE4OS4yMTcsOC44MTljLTMyLjc1OCw4LjgzLTYyLjkxMywyMy45OTMtODkuMDc1LDQ0LjEwMWw4OS4wNzUsODkuMDc1VjguODE5eiIvPjxwYXRoIGQ9Im0zMjIuNzggNTAzLjE4YzMyLjc1O
+			C04LjgzIDYyLjkxMy0yMy45OTMgODkuMDc1LTQ0LjEwMWwtODkuMDc1LTg5LjA3NXYxMzMuMTh6Ii8+PHBhdGggZD0ibTM3MCAzMjIuNzhsODkuMDc1IDg5LjA3NmMyMC4xMDgtMjYuMTYyIDM1LjI3Mi
+			01Ni4zMTggNDQuMTAxLTg5LjA3NmgtMTMzLjE4eiIvPjwvZz48ZyBmaWxsPSIjYzAwIj48cGF0aCBkPSJtNTA5LjgzIDIyMi42MWgtMjIwLjQ0di0yMjAuNDRjLTEwLjkzMS0xLjQyMy0yMi4wNzUtMi4
+			xNjctMzMuMzkyLTIuMTY3LTExLjMxOSAwLTIyLjQ2MSAwLjc0NC0zMy4zOTEgMi4xNjd2MjIwLjQ0aC0yMjAuNDRjLTEuNDIzIDEwLjkzMS0yLjE2NyAyMi4wNzUtMi4xNjcgMzMuMzkyIDAgMTEuMzE5
+			IDAuNzQ0IDIyLjQ2MSAyLjE2NyAzMy4zOTFoMjIwLjQ0djIyMC40NGMxMC45MzEgMS40MjMgMjIuMDczIDIuMTY3IDMzLjM5MiAyLjE2NyAxMS4zMTcgMCAyMi40NjEtMC43NDMgMzMuMzkxLTIuMTY3d
+			i0yMjAuNDRoMjIwLjQ0YzEuNDIzLTEwLjkzMSAyLjE2Ny0yMi4wNzMgMi4xNjctMzMuMzkyIDAtMTEuMzE3LTAuNzQ0LTIyLjQ2MS0yLjE2Ny0zMy4zOTF6Ii8+PHBhdGggZD0ibTMyMi43OCAzMjIuNz
+			hsMTE0LjI0IDExNC4yNGM1LjI1NC01LjI1MiAxMC4yNjYtMTAuNzQzIDE1LjA0OC0xNi40MzVsLTk3LjgwMi05Ny44MDJoLTMxLjQ4MnYxZS0zeiIvPjxwYXRoIGQ9Im0xODkuMjIgMzIyLjc4aC0yZS0
+			zbC0xMTQuMjQgMTE0LjI0YzUuMjUyIDUuMjU0IDEwLjc0MyAxMC4yNjYgMTYuNDM1IDE1LjA0OGw5Ny44MDItOTcuODA0di0zMS40Nzl6Ii8+PHBhdGggZD0ibTE4OS4yMiAxODkuMjJ2LTJlLTNsLTEx
+			NC4yNC0xMTQuMjRjLTUuMjU0IDUuMjUyLTEwLjI2NiAxMC43NDMtMTUuMDQ4IDE2LjQzNWw5Ny44MDMgOTcuODAzaDMxLjQ4MXoiLz48cGF0aCBkPSJtMzIyLjc4IDE4OS4yMmwxMTQuMjQtMTE0LjI0Y
+			y01LjI1Mi01LjI1NC0xMC43NDMtMTAuMjY2LTE2LjQzNS0xNS4wNDdsLTk3LjgwMiA5Ny44MDN2MzEuNDgyeiIvPjwvZz48L3N2Zz4NCg==" display="none"/>
+			<a href="./cv-fr.pdf">Télécharger</a>
+			<button id="prev-fr">Précédente</button>
+			<button id="next-fr">Suivante</button>
+		</div>
+		&nbsp; &nbsp;
+		<span>Page:
+			<span id="page_num"></span> /
+			<span id="page_count"></span>
+		</span>
+	</div>
+	<div style="width:100%">
+		<canvas id="pdf-canvas" class="center"></canvas>
+	</div>
+	<footer class="center">
+		Julien Bellue &#10070;
+		<a href="https://github.com/jbellue/cv">https://github.com/jbellue/cv</a>
+	</footer>
+<script type="text/javascript">
+var url = './cv-en.pdf';
+
+// Loaded via <script> tag, create shortcut to access PDF.js exports.
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+// The workerSrc property shall be specified.
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.480/build/pdf.worker.js';
+var pdfDoc = null,
+	pageNum = 1,
+	pageRendering = false,
+	pageNumPending = null,
+	scale = 1.5,
+	canvas = document.getElementById('pdf-canvas'),
+	ctx = canvas.getContext('2d');
+
+/**
+	* Get page info from document, resize canvas accordingly, and render page.
+	* @param num Page number.
+	*/
+function renderPage(num) {
+	pageRendering = true;
+	// Using promise to fetch the page
+	pdfDoc.getPage(num).then(function (page) {
+		var viewport = page.getViewport(scale);
+		canvas.height = viewport.height;
+		canvas.width = viewport.width;
+
+		// Render PDF page into canvas context
+		var renderContext = {
+			canvasContext: ctx,
+			viewport: viewport
+		};
+		var renderTask = page.render(renderContext);
+
+		// Wait for rendering to finish
+		renderTask.promise.then(function () {
+			pageRendering = false;
+			if (pageNumPending !== null) {
+				// New page rendering is pending
+				renderPage(pageNumPending);
+				pageNumPending = null;
+			}
+		});
+	});
+
+	// Update page counters
+	document.getElementById('page_num').textContent = num;
+}
+
+/**
+	* If another page rendering in progress, waits until the rendering is
+	* finised. Otherwise, executes rendering immediately.
+	*/
+function queueRenderPage(num) {
+	if (pageRendering) {
+		pageNumPending = num;
+	} else {
+		renderPage(num);
+	}
+}
+
+/**
+	* Displays previous page.
+	*/
+function onPrevPage() {
+	if (pageNum <= 1) {
+		return;
+	}
+	pageNum--;
+	queueRenderPage(pageNum);
+}
+document.getElementById('prev-en').addEventListener('click', onPrevPage);
+document.getElementById('prev-fr').addEventListener('click', onPrevPage);
+/**
+	* Displays next page.
+	*/
+function onNextPage() {
+	if (pageNum >= pdfDoc.numPages) {
+		return;
+	}
+	pageNum++;
+	queueRenderPage(pageNum);
+}
+document.getElementById('next-en').addEventListener('click', onNextPage);
+document.getElementById('next-fr').addEventListener('click', onNextPage);
+
+document.getElementById('fr-flag').addEventListener('click', function () {
+	pdfjsLib.getDocument('./cv-fr.pdf').then(function (pdfDoc_) {
+	pdfDoc = pdfDoc_;
+	document.getElementById('page_count').textContent = pdfDoc.numPages;
+	renderPage(1);
+	document.getElementById('en-values').hidden = true;
+	document.getElementById('fr-values').hidden = false;
+})});
+document.getElementById('uk-flag').addEventListener('click', function () {
+	pdfjsLib.getDocument('./cv-en.pdf').then(function (pdfDoc_) {
+	pdfDoc = pdfDoc_;
+	document.getElementById('page_count').textContent = pdfDoc.numPages;
+	renderPage(1);
+	document.getElementById('en-values').hidden = false;
+	document.getElementById('fr-values').hidden = true;
+})});
+
+/**
+	* Asynchronously downloads PDF.
+	*/
+pdfjsLib.getDocument(url).then(function (pdfDoc_) {
+	pdfDoc = pdfDoc_;
+	document.getElementById('page_count').textContent = pdfDoc.numPages;
+
+	// Initial/first page rendering
+	renderPage(pageNum);
+});
+</script>
+</body>
+
+</html>
