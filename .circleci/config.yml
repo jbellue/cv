@@ -1,0 +1,14 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: koppor/texlive
+     steps:
+       - checkout
+       - run: latexmk -pdf cv-en.tex
+       - run: latexmk -pdf cv-fr.tex
+       - run: mkdir build && cp *.pdf *.html build/
+       - run: if [ "$CIRCLE_BRANCH" == "master" ]; then bash .circleci/deploy-ghpages.sh build/; fi
+       - run: latexmk -C
+       - store_artifacts:
+          path: build/
