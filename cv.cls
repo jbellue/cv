@@ -11,11 +11,11 @@
   {}                           % Can be used to insert code before the heading
   [\titlerule]                 % Inserts a horizontal line after the heading
   
-  \titleformat{\subsection}
+\titleformat{\subsection}
   {\large\scshape\raggedright}
   {}{0em}
   {}
-  
+
 \newcommand{\datedsection}[2]{ %
     \section[#1]{#1 \hfill #2}%
 }
@@ -25,7 +25,6 @@
 \newcommand{\datedsubsection}[2]{ %
     \subsection[#1]{#1 \hfill #2}%
 }
-
 
 \newcommand{\name}[1]{
     \centerline{\Huge{#1}}
