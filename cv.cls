@@ -31,7 +31,7 @@
     \centerline{\Huge{#1}}
 }
 
-\newcommand{\contacten}[5]{
+\newcommand{\contact}[5]{
 \vspace{5mm}
 \begin{minipage}{0.45\linewidth}
   #1 \\
@@ -40,26 +40,11 @@
 \end{minipage}
 \begin{minipage}{0.45\linewidth}
   \begin{tabular}{ll}
-    Email: & \href{mailto:#4}{\tt #4} \\
-    Phone: & #5 \\
+    & \href{mailto:#4}{\tt #4} \\
+    & #5 \\
   \end{tabular}
 \end{minipage}
 }
-\newcommand{\contactfr}[5]{
-\vspace{5mm}
-\begin{minipage}{0.45\linewidth}
-  #1 \\
-  #2 \\
-  #3
-\end{minipage}
-\begin{minipage}{0.45\linewidth}
-  \begin{tabular}{ll}
-    Email: & \href{mailto:#4}{\tt #4} \\
-    Phone: & #5 \\
-  \end{tabular}
-\end{minipage}
-}
-
 
 \newcolumntype{L}{>{\raggedleft}p{0.14\textwidth}}
 \newcolumntype{R}{p{0.8\textwidth}}
