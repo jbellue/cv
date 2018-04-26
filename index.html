@@ -9,9 +9,9 @@
 	<style type="text/css">
 		.center{text-align: center; margin: 0 auto; width: auto; display:block;}
 		#pdf-canvas{margin-top:-60px;}
-		#menu {position:fixed;top:0;}
-		.halfSize {transform: scale(0.5);}​
-		button{width:72px; padding:0;}
+		#menu {text-align:center; position:fixed;top:0;}
+		.halfSize {transform: scale(0.5);}
+		input[type=button]{width: 7em;}
 	</style>
 </head>
 
@@ -49,8 +49,8 @@
 			<span id="page_count"></span>
 		</span>
 		<br>
-		<button id="btnPrev">Previous</button>
-		<button id="btnNext">Next</button>
+		<input type="button" id="btnPrev" value="Previous"/>
+		<input type="button" id="btnNext" value="Next"/>
 		<br>
 		<a id="dlLink" href="./cv-en.pdf" download>Download</a>
 	</div>
@@ -152,8 +152,8 @@ document.getElementById('fr-flag').addEventListener('click', () => {
 		let dlLink = document.getElementById('dlLink');
 		dlLink.href = "./cv-fr.pdf";
 		dlLink.innerText = "Télécharger";
-		document.getElementById('btnPrev').textContent = "Précédente";
-		document.getElementById('btnNext').textContent = "Suivante";
+		document.getElementById('btnPrev').value = "Précédente";
+		document.getElementById('btnNext').value = "Suivante";
 		document.getElementById('uk-flag').classList.add("halfSize");
 		document.getElementById('fr-flag').classList.remove("halfSize");
 	});
@@ -164,8 +164,8 @@ document.getElementById('uk-flag').addEventListener('click', () => {
 		let dlLink = document.getElementById('dlLink');
 		dlLink.href = "./cv-en.pdf";
 		dlLink.innerText = "Download";
-		document.getElementById('btnPrev').textContent = "Previous";
-		document.getElementById('btnNext').textContent = "Next";
+		document.getElementById('btnPrev').value = "Previous";
+		document.getElementById('btnNext').value = "Next";
 		document.getElementById('fr-flag').classList.add("halfSize");
 		document.getElementById('uk-flag').classList.remove("halfSize");
 	});
