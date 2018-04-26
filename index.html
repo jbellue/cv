@@ -58,6 +58,8 @@
 		<input type="button" id="btnNext" value="Next"/>
 		<br>
 		<a id="dlLink" href="./cv-en.pdf" download>Download</a>
+		<br>
+		<div id="ciHelper">This PDF is automatically generated every time an update is pushed to </div><a id="ciLink" href="https://github.com/jbellue/cv">my github</a>.
 	</div>
 	<canvas id="pdf-canvas" class="center"></canvas>
 	<footer class="center">
@@ -158,6 +160,8 @@ document.getElementById('fr-flag').addEventListener('click', () => {
 		document.getElementById('btnNext').value = "Suivante";
 		document.getElementById('uk-flag').classList.add("halfSize");
 		document.getElementById('fr-flag').classList.remove("halfSize");
+		document.getElementById("ciHelper").innerText = "Ce fichier PDF est automatiquement généré à chaque commit sur ";
+		document.getElementById("ciLink").innerText = "mon github";
 	});
 });
 document.getElementById('uk-flag').addEventListener('click', () => {
@@ -170,6 +174,8 @@ document.getElementById('uk-flag').addEventListener('click', () => {
 		document.getElementById('btnNext').value = "Next";
 		document.getElementById('fr-flag').classList.add("halfSize");
 		document.getElementById('uk-flag').classList.remove("halfSize");
+		document.getElementById("ciHelper").innerText = "This PDF is automatically generated every time an update is pushed to ";
+		document.getElementById("ciLink").innerText = "my github";
 	});
 });
 
