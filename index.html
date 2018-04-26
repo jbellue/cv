@@ -7,11 +7,16 @@
 	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.480/build/pdf.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.480/build/pdf.worker.js"></script>
 	<style type="text/css">
+		@media (min-width: 1200px) {
+			#menu {position:fixed; top:0; float: left;width: 240px;}
+			#pdf-canvas {margin-top: -20px;}
+		}
 		.center{text-align: center; margin: 0 auto; width: auto; display:block;}
-		#pdf-canvas{margin-top:-60px;}
-		#menu {text-align:center; position:fixed;top:0;}
+		#menu {text-align:center; padding: 10px;}
 		.halfSize {transform: scale(0.5);}
-		input[type=button]{width: 7em;}
+		#pdf-canvas {margin-top: -100px;position:relative; z-index:-1;}
+		input[type=button]{width: 7rem;}
+		footer{clear:both;}
 	</style>
 </head>
 
@@ -54,10 +59,7 @@
 		<br>
 		<a id="dlLink" href="./cv-en.pdf" download>Download</a>
 	</div>
-	</div>
-	<div style="width:100%">
-		<canvas id="pdf-canvas" class="center"></canvas>
-	</div>
+	<canvas id="pdf-canvas" class="center"></canvas>
 	<footer class="center">
 		Julien Bellue &#10070;
 		<a href="https://github.com/jbellue/cv">https://github.com/jbellue/cv</a>
