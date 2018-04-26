@@ -85,7 +85,7 @@ var pdfDoc = null,
 function renderPage(num) {
 	pageRendering = true;
 	// Using promise to fetch the page
-	pdfDoc.getPage(num).then(function (page) {
+	pdfDoc.getPage(num).then(page => {
 		var viewport = page.getViewport(scale);
 		canvas.height = viewport.height;
 		canvas.width = viewport.width;
@@ -98,7 +98,7 @@ function renderPage(num) {
 		var renderTask = page.render(renderContext);
 
 		// Wait for rendering to finish
-		renderTask.promise.then(function () {
+		renderTask.promise.then(() => {
 			pageRendering = false;
 			if (pageNumPending !== null) {
 				// New page rendering is pending
@@ -124,32 +124,31 @@ function queueRenderPage(num) {
 	}
 }
 
-/**
- * Displays previous page.
- */
 document.getElementById('btnPrev').addEventListener('click', () => {
 	if (pageNum <= 1) {
 		return;
 	}
-	pageNum--;
+	--pageNum;
 	queueRenderPage(pageNum);
 });
-/**
- * Displays next page.
- */
+
 document.getElementById('btnNext').addEventListener('click', () => {
 	if (pageNum >= pdfDoc.numPages) {
 		return;
 	}
-	pageNum++;
+	++pageNum;
 	queueRenderPage(pageNum);
 });
 
-document.getElementById('fr-flag').addEventListener('click', function () {
-	pdfjsLib.getDocument('./cv-fr.pdf').then(function (pdfDoc_) {
-		pdfDoc = pdfDoc_;
-		document.getElementById('page_count').textContent = pdfDoc.numPages;
-		renderPage(1);
+const updatePdf = (newFile) => {
+	pdfDoc = newFile;
+	document.getElementById('page_count').textContent = pdfDoc.numPages;
+	renderPage(1);
+}
+
+document.getElementById('fr-flag').addEventListener('click', () => {
+	pdfjsLib.getDocument('./cv-fr.pdf').then((pdfDoc_) => {
+		updatePdf(pdfDoc_);
 		let dlLink = document.getElementById('dlLink');
 		dlLink.href = "./cv-fr.pdf";
 		dlLink.innerText = "Télécharger";
@@ -159,11 +158,9 @@ document.getElementById('fr-flag').addEventListener('click', function () {
 		document.getElementById('fr-flag').classList.remove("halfSize");
 	});
 });
-document.getElementById('uk-flag').addEventListener('click', function () {
+document.getElementById('uk-flag').addEventListener('click', () => {
 	pdfjsLib.getDocument('./cv-en.pdf').then(function (pdfDoc_) {
-		pdfDoc = pdfDoc_;
-		document.getElementById('page_count').textContent = pdfDoc.numPages;
-		renderPage(1);
+		updatePdf(pdfDoc_);
 		let dlLink = document.getElementById('dlLink');
 		dlLink.href = "./cv-en.pdf";
 		dlLink.innerText = "Download";
@@ -177,10 +174,9 @@ document.getElementById('uk-flag').addEventListener('click', function () {
 /**
 	* Asynchronously downloads PDF.
 	*/
-pdfjsLib.getDocument(url).then(function (pdfDoc_) {
+pdfjsLib.getDocument(url).then((pdfDoc_) => {
 	pdfDoc = pdfDoc_;
 	document.getElementById('page_count').textContent = pdfDoc.numPages;
-
 	// Initial/first page rendering
 	renderPage(pageNum);
 });
