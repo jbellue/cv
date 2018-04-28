@@ -2,8 +2,9 @@ version: 2
 jobs:
    build:
      docker:
-       - image: koppor/texlive
+       - image: circleci/buildpack-deps:bionic-scm
      steps:
+       - run: sudo apt-get install -y --no-install-recommends latexmk texlive-formats-extra texlive-lang-french
        - checkout
        - run: latexmk -pdf cv-en.tex
        - run: latexmk -pdf cv-fr.tex
