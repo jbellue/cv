@@ -147,7 +147,8 @@ document.getElementById('btnNext').addEventListener('click', () => {
 const updatePdf = (newFile) => {
 	pdfDoc = newFile;
 	document.getElementById('page_count').textContent = pdfDoc.numPages;
-	renderPage(1);
+	pageNum = 1;
+	renderPage(pageNum);
 }
 
 document.getElementById('fr-flag').addEventListener('click', () => {
