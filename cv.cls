@@ -20,7 +20,7 @@
     \section[#1]{#1 \hfill #2}%
 }
 \newcommand{\datedtitledsubsection}[3]{ %
-    \subsection[#1]{\textbf{#1} - #2 \hfill #3}%
+    \subsection[#1]{\textbf{#1} --- #2 \hfill #3}%
 }
 \newcommand{\datedsubsection}[2]{ %
     \subsection[#1]{#1 \hfill #2}%

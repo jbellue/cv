@@ -4,8 +4,9 @@ jobs:
      docker:
        - image: circleci/buildpack-deps:bionic-scm
      steps:
-       - run: sudo apt-get install -y --no-install-recommends latexmk texlive-formats-extra texlive-lang-french
+       - run: sudo apt-get install -y --no-install-recommends latexmk chktex texlive-formats-extra texlive-lang-french
        - checkout
+       - run: chktex cv-en.tex cv-fr.tex cv.cls
        - run: latexmk -pdf cv-en.tex
        - run: latexmk -pdf cv-fr.tex
        - run: mkdir build && cp *.pdf *.html build/
