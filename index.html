@@ -51,8 +51,8 @@
 		GQ9Ik0wLDI1NmMwLDExMC4wNzEsNjkuNDczLDIwMy45MDYsMTY2Ljk1NywyNDAuMDc3VjE1LjkyM0M2OS40NzMsNTIuMDk0LDAsMTQ1LjkyOSwwLDI1NnoiIGZpbGw9IiMwMDIzOTUiLz48L3N2Zz4="/>
 		<br>
 		<span>Page:
-			<span id="page_num"></span> /
-			<span id="page_count"></span>
+			<span id="pageNum"></span> /
+			<span id="pageCount"></span>
 		</span>
 		<br>
 		<input type="button" id="btnPrev"/>
@@ -130,7 +130,7 @@ const renderPage = (num) => {
 	});
 
 	// Update page counters
-	document.getElementById('page_num').textContent = num;
+	document.getElementById('pageNum').textContent = num;
 }
 
 /**
@@ -149,21 +149,19 @@ document.getElementById('btnPrev').addEventListener('click', () => {
 	if (pageNum <= 1) {
 		return;
 	}
-	--pageNum;
-	queueRenderPage(pageNum);
+	queueRenderPage(--pageNum);
 });
 
 document.getElementById('btnNext').addEventListener('click', () => {
 	if (pageNum >= pdfDoc.numPages) {
 		return;
 	}
-	++pageNum;
-	queueRenderPage(pageNum);
+	queueRenderPage(++pageNum);
 });
 
 const updatePdf = (newFile) => {
 	pdfDoc = newFile;
-	document.getElementById('page_count').textContent = pdfDoc.numPages;
+	document.getElementById('pageCount').textContent = pdfDoc.numPages;
 	pageNum = 1;
 	renderPage(pageNum);
 }
@@ -176,7 +174,7 @@ const setLanguage = (lang) => {
 		document.getElementById('uk-flag').classList.remove("halfSize");
 		lang = "en";
 	}
-	pdfjsLib.getDocument(languageData[lang].url).then(function (pdfDoc_) {
+	pdfjsLib.getDocument(languageData[lang].url).then((pdfDoc_) => {
 		updatePdf(pdfDoc_);
 	});
 	let dlLink = document.getElementById('dlLink');
