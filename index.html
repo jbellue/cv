@@ -55,12 +55,12 @@
 			<span id="page_count"></span>
 		</span>
 		<br>
-		<input type="button" id="btnPrev" value="Previous"/>
-		<input type="button" id="btnNext" value="Next"/>
+		<input type="button" id="btnPrev"/>
+		<input type="button" id="btnNext"/>
 		<br>
-		<a id="dlLink" href="./cv-en.pdf" download>Download</a>
+		<a id="dlLink" download></a>
 		<br>
-		<div id="ciHelper">This PDF is automatically generated every time an update is pushed to </div><a id="ciLink" href="https://github.com/jbellue/cv">my github</a>.
+		<div id="ciHelper"></div><a id="ciLink" href="https://github.com/jbellue/cv"></a>.
 	</div>
 	<canvas id="pdf-canvas" class="center"></canvas>
 	<footer class="center">
@@ -68,6 +68,24 @@
 		<a href="https://github.com/jbellue/cv">https://github.com/jbellue/cv</a>
 	</footer>
 <script type="text/javascript">
+const languageData = {
+	"en": {
+		"url": "./cv-en.pdf",
+		"dlInnerText": "Download",
+		"previous": "Previous",
+		"next": "Next",
+		"subTitle": "This PDF is automatically generated every time an update is pushed to ",
+		"linkText": "my github"
+	},
+	"fr": {
+		"url": "./cv-fr.pdf",
+		"dlInnerText": "Télécharger",
+		"previous": "Précédente",
+		"next": "Suivante",
+		"subTitle": "Ce fichier PDF est automatiquement généré à chaque commit sur ",
+		"linkText": "mon github"
+	}
+};
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
@@ -149,57 +167,43 @@ const updatePdf = (newFile) => {
 	pageNum = 1;
 	renderPage(pageNum);
 }
-const setPageLanguage = (lang) => {
-	let dlLink = document.getElementById('dlLink');
+const setLanguage = (lang) => {
 	if (lang === "fr") {
-		dlLink.href = "./cv-fr.pdf";
-		dlLink.innerText = "Télécharger";
-		document.getElementById('btnPrev').value = "Précédente";
-		document.getElementById('btnNext').value = "Suivante";
 		document.getElementById('uk-flag').classList.add("halfSize");
 		document.getElementById('fr-flag').classList.remove("halfSize");
-		document.getElementById("ciHelper").innerText = "Ce fichier PDF est automatiquement généré à chaque commit sur ";
-		document.getElementById("ciLink").innerText = "mon github";
 	} else {
-		dlLink.href = "./cv-en.pdf";
-		dlLink.innerText = "Download";
-		document.getElementById('btnPrev').value = "Previous";
-		document.getElementById('btnNext').value = "Next";
 		document.getElementById('fr-flag').classList.add("halfSize");
 		document.getElementById('uk-flag').classList.remove("halfSize");
-		document.getElementById("ciHelper").innerText = "This PDF is automatically generated every time an update is pushed to ";
-		document.getElementById("ciLink").innerText = "my github";
+		lang = "en";
 	}
-}
-document.getElementById('fr-flag').addEventListener('click', () => {
-	pdfjsLib.getDocument('./cv-fr.pdf').then((pdfDoc_) => {
+	pdfjsLib.getDocument(languageData[lang].url).then(function (pdfDoc_) {
 		updatePdf(pdfDoc_);
-		setPageLanguage("fr");
 	});
+	let dlLink = document.getElementById('dlLink');
+	dlLink.href = languageData[lang].url;
+	dlLink.innerText = languageData[lang].dlInnerText;
+	document.getElementById('btnPrev').value = languageData[lang].previous;
+	document.getElementById('btnNext').value = languageData[lang].next;
+	document.getElementById("ciHelper").innerText = languageData[lang].subTitle;
+	document.getElementById("ciLink").innerText = languageData[lang].linkText;
+}
+
+document.getElementById('fr-flag').addEventListener('click', () => {
+	setLanguage("fr");
 });
 document.getElementById('uk-flag').addEventListener('click', () => {
-	pdfjsLib.getDocument('./cv-en.pdf').then(function (pdfDoc_) {
-		updatePdf(pdfDoc_);
-		setPageLanguage("en");
-	});
+	setLanguage("en");
 });
 
-/**
-	* Asynchronously downloads PDF.
-	*/
-var url = './cv-en.pdf';
-
+let language = "en";
+// check if the language has been overridden (...?lang="fr")
 if (location.search.split('lang=')[1] === "fr") {
-	url = './cv-fr.pdf';
+	// remove GET parameters, for a cleaner history
 	window.history.replaceState({}, document.title, location.protocol + "//" + location.host + location.pathname);
-	setPageLanguage("fr");
+	language = "fr";
 }
-pdfjsLib.getDocument(url).then((pdfDoc_) => {
-	pdfDoc = pdfDoc_;
-	document.getElementById('page_count').textContent = pdfDoc.numPages;
-	// Initial/first page rendering
-	renderPage(pageNum);
-});
+setLanguage(language);
+
 </script>
 </body>
 
