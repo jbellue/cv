@@ -197,10 +197,11 @@ document.getElementById('uk-flag').addEventListener('click', () => {
 
 let language = "en";
 // check if the language has been overridden (...?lang="fr")
-if (location.search.split('lang=')[1] === "fr") {
+let urlLanguage = location.search.split('lang=')[1];
+if (urlLanguage && languageData[urlLanguage]) {
 	// remove GET parameters, for a cleaner history
 	window.history.replaceState({}, document.title, location.protocol + "//" + location.host + location.pathname);
-	language = "fr";
+	language = urlLanguage;
 }
 setLanguage(language);
 
