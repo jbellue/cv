@@ -68,8 +68,6 @@
 		<a href="https://github.com/jbellue/cv">https://github.com/jbellue/cv</a>
 	</footer>
 <script type="text/javascript">
-var url = './cv-en.pdf';
-
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
@@ -87,20 +85,20 @@ var pdfDoc = null,
 	* Get page info from document, resize canvas accordingly, and render page.
 	* @param num Page number.
 	*/
-function renderPage(num) {
+const renderPage = (num) => {
 	pageRendering = true;
 	// Using promise to fetch the page
 	pdfDoc.getPage(num).then(page => {
-		var viewport = page.getViewport(scale);
+		let viewport = page.getViewport(scale);
 		canvas.height = viewport.height;
 		canvas.width = viewport.width;
 
 		// Render PDF page into canvas context
-		var renderContext = {
+		let renderContext = {
 			canvasContext: ctx,
 			viewport: viewport
 		};
-		var renderTask = page.render(renderContext);
+		let renderTask = page.render(renderContext);
 
 		// Wait for rendering to finish
 		renderTask.promise.then(() => {
@@ -121,7 +119,7 @@ function renderPage(num) {
 	* If another page rendering in progress, waits until the rendering is
 	* finised. Otherwise, executes rendering immediately.
 	*/
-function queueRenderPage(num) {
+const queueRenderPage = (num) => {
 	if (pageRendering) {
 		pageNumPending = num;
 	} else {
@@ -152,7 +150,7 @@ const updatePdf = (newFile) => {
 	renderPage(pageNum);
 }
 const setPageLanguage = (lang) => {
-		let dlLink = document.getElementById('dlLink');
+	let dlLink = document.getElementById('dlLink');
 	if (lang === "fr") {
 		dlLink.href = "./cv-fr.pdf";
 		dlLink.innerText = "Télécharger";
