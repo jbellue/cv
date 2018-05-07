@@ -12,5 +12,6 @@ Overkill? Yes. Awesome? Yes!
 
 ### Updates
 
+* Added very basic URL parsing, to directly go to the French version ([https://jbellue.github.io/cv/?lang=fr](https://jbellue.github.io/cv/?lang=fr))
 * Rewrote that README, to explain a bit what's up
 * Shaved 3 minutes off the deployment by using a more standard docker image, and adding the needed packages

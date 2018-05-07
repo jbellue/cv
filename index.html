@@ -151,11 +151,9 @@ const updatePdf = (newFile) => {
 	pageNum = 1;
 	renderPage(pageNum);
 }
-
-document.getElementById('fr-flag').addEventListener('click', () => {
-	pdfjsLib.getDocument('./cv-fr.pdf').then((pdfDoc_) => {
-		updatePdf(pdfDoc_);
+const setPageLanguage = (lang) => {
 		let dlLink = document.getElementById('dlLink');
+	if (lang === "fr") {
 		dlLink.href = "./cv-fr.pdf";
 		dlLink.innerText = "Télécharger";
 		document.getElementById('btnPrev').value = "Précédente";
@@ -164,12 +162,7 @@ document.getElementById('fr-flag').addEventListener('click', () => {
 		document.getElementById('fr-flag').classList.remove("halfSize");
 		document.getElementById("ciHelper").innerText = "Ce fichier PDF est automatiquement généré à chaque commit sur ";
 		document.getElementById("ciLink").innerText = "mon github";
-	});
-});
-document.getElementById('uk-flag').addEventListener('click', () => {
-	pdfjsLib.getDocument('./cv-en.pdf').then(function (pdfDoc_) {
-		updatePdf(pdfDoc_);
-		let dlLink = document.getElementById('dlLink');
+	} else {
 		dlLink.href = "./cv-en.pdf";
 		dlLink.innerText = "Download";
 		document.getElementById('btnPrev').value = "Previous";
@@ -178,12 +171,31 @@ document.getElementById('uk-flag').addEventListener('click', () => {
 		document.getElementById('uk-flag').classList.remove("halfSize");
 		document.getElementById("ciHelper").innerText = "This PDF is automatically generated every time an update is pushed to ";
 		document.getElementById("ciLink").innerText = "my github";
+	}
+}
+document.getElementById('fr-flag').addEventListener('click', () => {
+	pdfjsLib.getDocument('./cv-fr.pdf').then((pdfDoc_) => {
+		updatePdf(pdfDoc_);
+		setPageLanguage("fr");
+	});
+});
+document.getElementById('uk-flag').addEventListener('click', () => {
+	pdfjsLib.getDocument('./cv-en.pdf').then(function (pdfDoc_) {
+		updatePdf(pdfDoc_);
+		setPageLanguage("en");
 	});
 });
 
 /**
 	* Asynchronously downloads PDF.
 	*/
+var url = './cv-en.pdf';
+
+if (location.search.split('lang=')[1] === "fr") {
+	url = './cv-fr.pdf';
+	window.history.replaceState({}, document.title, location.protocol + "//" + location.host + location.pathname);
+	setPageLanguage("fr");
+}
 pdfjsLib.getDocument(url).then((pdfDoc_) => {
 	pdfDoc = pdfDoc_;
 	document.getElementById('page_count').textContent = pdfDoc.numPages;
