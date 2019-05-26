@@ -63,7 +63,6 @@
 		<br>
 		<div id="ciHelper"></div><a id="ciLink" href="https://github.com/jbellue/cv"></a>.
 	</div>
-	<div class="progressBar"></div>
 	<canvas id="pdf-canvas" class="center"></canvas>
 	<footer class="center">
 		Julien Bellue &#10070;
@@ -182,10 +181,10 @@ const setLanguage = (lang) => {
 	loadingTask.onProgress = (progress) => {
 		var percent = parseInt(progress.loaded / progress.total * 100);
 		progressJs().set(percent);
-		console.log(percent);
 	};
 	loadingTask.promise.then((pdfDoc_) => {
 		updatePdf(pdfDoc_);
+		progressJs().end();
 	});
 
 	let dlLink = document.getElementById('dlLink');
