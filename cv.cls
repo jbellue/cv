@@ -10,6 +10,16 @@
 \NewMultilangCmd{\It}{command=\item, margs=item}
 \NewMultilangCmd{\DatedSub}{command=\datedsubsection, margs={location,date}}
 
+\newcommand\entry[6]{
+  \begin{tabular}{L!{\VRule}R}
+    #1&#2\\
+    #3&#4\\
+    #5&#6\\
+  \end{tabular}}
+\NewMultilangCmd{\LangTable}{command=\entry, margs={lang1, text1,
+                                                    lang2, text2,
+                                                    lang3, text3}}
+
 \titleformat{\section}         % Customise the \section command 
   {\Large\scshape\raggedright} % Make the \section headers large (\Large),
                                % small capitals (\scshape) and left aligned (\raggedright)
