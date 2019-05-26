@@ -1,0 +1,238 @@
+\documentclass{cv}
+\usepackage[french, english]{babel}
+\usepackage[languages={english,french}]{multilang}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage[a4paper, hmargin = { 3cm }, bmargin = { 3cm }]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{multilang-sect}
+
+\NewMultilangCmd{\Para}{command=\empty, margs=text}
+\NewMultilangCmd{\It}{command=\item, margs=item}
+\NewMultilangCmd{\DatedSub}{command=\datedsubsection, margs={location,date}}
+
+\begin{document}
+\name{Julien Bellue}
+\iffalse\contact{address line 1}
+        {address line 2}
+        {address line 3}
+        {email@address.com}
+        {+phone~number}
+\fi
+
+\begin{Section}{
+      title/english={Work},
+      title/french={Expérience Professionnelle}
+}
+\datedtitledsubsection{Cayan}{Principal Software Engineer}{2017--2018}
+\datedtitledsubsection{Cayan}{Software Engineer}{2016--2017}
+\Para{
+      text/english={Improvement of legacy software, development of new features matching the business requirements, following projects from their definition to their release. Providing technical guidance to a team, while assisting other members to ensure the stability and reliability of the deliverables.},
+      text/french={Amélioration du logiciel existant, design et développement de nouvelles fonctionnalités du terminal de cartes bancaires \textit{Genius} répondant aux besoins de l'entreprise. Management de projets, de leur définition à leur \textit{release}. Conseils et mentoring technique d'une équipe de 5 personnes.}
+}
+\begin{SubSection} {
+      title/english={Achievements},
+      title/french={Accomplissements}
+}
+\begin{itemize}
+\It{
+      item/english={Improvement of automated testing, making the automation build much closer to the production one},
+      item/french={Amélioration de la gestion des tests automatisés, rendant la version automatisée du logiciel beaucoup plus proche de sa version finale}
+}
+\It{
+      item/english={Promotion from Software Engineer to Principal Software Engineer},
+      item/french={Promotion d'ingénieur à chef d'équipe}
+}
+\It{
+      item/english={Mentoring of a team to learn C++ and write production-ready code},
+      item/french={Supervision de la transition d'une équipe de C vers C++}
+}
+\It{
+      item/english={Hackathon project winner: arduino monitoring status of Jenkins' continuous integration},
+      item/french={Gagnant d'un hackathon : surveillance du statut de l'intégration continue sous Jenkins avec un arduino} % chktex-file 26
+}
+\end{itemize}
+\end{SubSection}
+\begin{SubSection} {
+      title/english={Skills learnt},
+      title/french={Compétences acquises}
+}
+\begin{itemize}
+\It{
+      item/english={Team management},
+      item/french={Gestion d'équipe}
+}
+\It{
+      item/english={Behavioural Driven Development},
+      item/french={Behavioural-Driven Development}
+}
+\It{
+      item/english={Rigorous C and C++ coding, closely matching the company's coding requirements},
+      item/french={Programmation C et C++ rigoureuse, correspondant aux exigences de stabilité du produit}
+}
+\It{
+      item/english={Autonomy of prioritising the workload, taking into account the most urgent requirement, being able to delay the least important tasks},
+      item/french={Autonomie de la hiérarchisation de la charge de travail, en tenant compte des exigences les plus urgentes qui pourraient retarder les tâches les moins importantes}
+}
+\It{
+      item/english={Unit testing, component testing and automated testing},
+      item/french={Tests unitaires, tests de composants et tests automatisés}
+}
+\end{itemize}
+
+\datedtitledsubsection{Fidessa}{Software Engineer}{2013--2015}
+\Para{
+      text/english={Involved in every stage of the development of new exchange interfaces, from the initial design to the actual coding unit testing of the software.
+                    Changed the software to follow the high-speed requirement of the quickly evolving market.},
+      text/french={Implication dans toutes les étapes du développement de nouvelles interfaces d'échanges financiers, de leur conception initiale aux tests unitaires du logiciel. Mise à jour du logiciel pour suivre les exigences de vitesse du marché.}
+}
+\end{SubSection}
+\begin{SubSection} {
+      title/english={Skills learnt},
+      title/french={Compétences acquises}
+}
+\begin{itemize}
+      \It{
+            item/english={Team-working},
+            item/french={Travail en équipe}
+      }
+      \It{
+            item/english={Agile methodology},
+            item/french={Méthodologie Agile}
+      }
+      \It{
+            item/english={Understanding of fail-over and hot-swappable servers},
+            item/french={Compréhension des serveurs fail-over et permutables à chaud}
+      }
+      \It{
+            item/english={Unix administration, shell, bash and tcsh scripting},
+            item/french={Administration Unix, scripts en shell, bash et tcsh}
+      }
+      \It{
+            item/english={Exhaustive TCL unit testing, to ensure software reliability and to detect unexpected API change from the market},
+            item/french={Tests unitaires exhaustifs en TCL, pour garantir la fiabilité du logiciel et détecter les changements inattendus d'API sur le marché}
+      }
+\end{itemize}
+
+\pagebreak
+\datedtitledsubsection{Dirox (Ho Chi Minh City, Vietnam)}{
+      \Para{
+            text/english={Internship},
+            text/french={Stage}
+      }}{2012}
+\Para{
+      text/english={Developed web applications in Django (python), and jQuery. Proof-of-concept application in Ember.js},
+      text/french={Developement d'applications web en Django (python) et jQuery. \textit{Proof of concept} du portage sous Ember.js}
+}
+\end{SubSection}
+\begin{SubSection} {
+      title/english={Skills learnt},
+      title/french={Compétences acquises}
+}
+\begin{itemize}
+      \It{
+            item/english={Code analysis to understand undocumented features and detect bugs in the various frameworks used},
+            item/french={Analyse de code pour comprendre les fonctionnalités non documentées et détecter les bugs dans les différents frameworks utilisés}
+      }
+      \It{
+            item/english={Web development, with a heavy emphasis on digital security},
+            item/french={Développement Web, avec un fort accent sur la sécurité numérique}
+      }
+\end{itemize}
+\end{SubSection}
+\end{Section}
+\begin{Section}{
+      title/english={Education},
+      title/french={Éducation}
+}
+\DatedSub{
+      location/english={Bordeaux 1 University of Technology},
+      date/english={2011--2012},
+      location/french={IUT de Bordeaux 1},
+      date/french={2011--2012}
+}
+\Para{
+      text/english={Computer science technical degree},
+      text/french={DUT informatique}
+}
+\DatedSub{
+      location/english={Michel de Montaigne University, Bordeaux},
+      date/english={2003--2006},
+      location/french={Université Michel de Montaigne, Bordeaux},
+      date/french={2003--2006}
+}
+\Para{
+      text/english={Degree in American and English Literature and Civilisation},
+      text/french={Licence Langues, littératures et civilisations étrangères}
+}
+\datedsubsection{Lycée Victor Louis, Talence}{2003}
+\Para{
+      text/english={Baccalauréat scientifique (equivalent to A-level in Maths, Physics and Biology)},
+      text/french={Baccalauréat série S, spécialité biologie}
+}
+
+\end{Section}
+\begin{Section}{
+      title/english={Skills},
+      title/french={Compétences}
+}
+
+\begin{SubSection} {
+      title/english={Technical},
+      title/french={Techniques}
+}
+\begin{itemize}
+      \It{
+            item/english={Languages: C, C++},
+            item/french={Langages: C, C++}
+      }
+      \It{
+            item/english={Scripting: shell, bash, python},
+            item/french={Scripting: shell, bash, python}
+      }
+      \It{
+            item/english={Testing: googletest / googlemock, Robot framework, cucumber},
+            item/french={Tests: googletest / googlemock, Robot framework, cucumber}
+      }
+      \It{
+            item/english={Web development (HTML, JavaScript, CSS)},
+            item/french={Dévelopment web (HTML, JavaScript, CSS)}
+      }
+      \It{
+            item/english={Behavioural Driven Development},
+            item/french={Behavioural-Driven Development}
+      }
+      \It{
+            item/english={Agile methodology},
+            item/french={Méthodologie Agile}
+      }
+      \It{
+            item/english={Unix and Solaris administration},
+            item/french={Administration Unix et Solaris}
+      }
+      \It{
+            item/english={Embedded software},
+            item/french={Logiciels embarqués}
+      }
+      \It{
+            item/english={Eclipse, Vim/vi, Visual Studio, Netbeans},
+            item/french={Eclipse, Vim/vi, Visual Studio, Netbeans}
+      }
+\end{itemize}
+
+\end{SubSection}
+\begin{SubSection} {
+      title/english={Languages},
+      title/french={Langues}
+}
+\begin{tabular}{L!{\VRule}R}
+      French&Mother tongue\\
+      English&Bilingual\\
+      Spanish&Conversational
+\end{tabular}
+\end{SubSection}
+\end{Section}
+\end{document}
+% Français&Langue maternelle\\
+% Anglais&Bilingue\\
+% Espagnol&Conversation\\
