@@ -2,7 +2,13 @@
 \ProvidesClass{cv}[6/6/2013 custom CV class]
 \LoadClass{article}
 \RequirePackage{titlesec}
+\usepackage[languages={english,french}]{multilang}
 \usepackage{array}
+
+
+\NewMultilangCmd{\Para}{command=\empty, margs=text}
+\NewMultilangCmd{\It}{command=\item, margs=item}
+\NewMultilangCmd{\DatedSub}{command=\datedsubsection, margs={location,date}}
 
 \titleformat{\section}         % Customise the \section command 
   {\Large\scshape\raggedright} % Make the \section headers large (\Large),
