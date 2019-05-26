@@ -4,7 +4,21 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[a4paper, hmargin = { 3cm }, bmargin = { 3cm }]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage[languages={english,french}]{multilang}
 \usepackage{multilang-sect}
+
+\NewMultilangCmd{\Para}{command=\empty, margs=text}
+\NewMultilangCmd{\It}{command=\item, margs=item}
+\NewMultilangCmd{\DatedSub}{command=\datedsubsection, margs={location,date}}
+\newcommand\entry[6]{
+  \begin{tabular}{L!{\VRule}R}
+    #1&#2\\
+    #3&#4\\
+    #5&#6\\
+  \end{tabular}}
+\NewMultilangCmd{\LangTable}{command=\entry, margs={lang1, text1,
+                                                    lang2, text2,
+                                                    lang3, text3}}
 
 \begin{document}
 \name{Julien Bellue}
@@ -222,14 +236,14 @@
 \LangTable{
       lang1/english={French},
       text1/english={Mother tongue},
-      lang1/french={Français},
-      text1/french={Langue maternelle},
       lang2/english={English},
       text2/english={Bilingual},
-      lang2/french={Anglais},
-      text2/french={Bilingue},
       lang3/english={Spanish},
       text3/english={Conversational},
+      lang1/french={Français},
+      text1/french={Langue maternelle},
+      lang2/french={Anglais},
+      text2/french={Bilingue},
       lang3/french={Espagnol},
       text3/french={Conversation}
 }
