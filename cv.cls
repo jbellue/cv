@@ -16,14 +16,14 @@
   {}{0em}
   {}
 
-\newcommand{\datedsection}[2]{ %
-    \section[#1]{#1 \hfill #2}%
+\newcommand{\datedsection}[2]{
+    \section[#1]{#1 \hfill #2}
 }
-\newcommand{\datedtitledsubsection}[3]{ %
-    \subsection[#1]{\textbf{#1} --- #2 \hfill #3}%
+\newcommand{\datedtitledsubsection}[3]{
+    \subsection[#1]{\textbf{#1} --- #2 \hfill #3}
 }
-\newcommand{\datedsubsection}[2]{ %
-    \subsection[#1]{#1 \hfill #2}%
+\newcommand{\datedsubsection}[2]{
+    \subsection[#1]{#1 \hfill #2}
 }
 
 \newcommand{\name}[1]{
@@ -33,14 +33,20 @@
 \newcommand{\contact}[5]{
 \vspace{5mm}
 \begin{minipage}{0.45\linewidth}
+\ifx&#1&
+\else
   #1 \\
+\fi
+\ifx&#2&
+\else
   #2 \\
-  #3
+\fi
+#3
 \end{minipage}
 \begin{minipage}{0.45\linewidth}
   \begin{tabular}{ll}
-    & \href{mailto:#4}{\tt #4} \\
-    & #5 \\
+    & \href{mailto:#4}{\tt #4}\\
+    & #5\\
   \end{tabular}
 \end{minipage}
 }
