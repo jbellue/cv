@@ -48,5 +48,3 @@
 \newcolumntype{L}{>{\raggedleft}p{0.14\textwidth}}
 \newcolumntype{R}{p{0.8\textwidth}}
 \newcommand\VRule{\vrule width 0.5pt}
-
-
