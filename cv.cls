@@ -35,18 +35,39 @@
 \begin{minipage}{0.45\linewidth}
 \ifx&#1&
 \else
-  #1 \\
+  #1
 \fi
 \ifx&#2&
 \else
-  #2 \\
+  \ifx&#1& %if there was a first line, add a return
+  \else
+    \\
+  \fi
+  #2
 \fi
-#3
+\ifx&#3&
+\else
+  \ifx&#2&   % if there was no previous argument,
+    \ifx&#1& % add a new line
+    \else
+      \\
+    \fi
+  \else
+    \\
+  \fi
+  #3
+\fi
 \end{minipage}
 \begin{minipage}{0.45\linewidth}
   \begin{tabular}{ll}
-    & \href{mailto:#4}{\tt #4}\\
-    & #5\\
+    \ifx&#4&
+    \else
+    & \href{mailto:#4}{\tt #4} \\
+    \fi
+    \ifx&#5&
+    \else
+    & #5
+    \fi
   \end{tabular}
 \end{minipage}
 }
