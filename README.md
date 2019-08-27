@@ -16,6 +16,7 @@ There's a seemingly useless file in there... What's the point?
 
 That file is only empty on that repo. On my machine, it is fully populated, with phone number, address, etc.
 I didn't really feel like it was a great idea to advertise these online, so I took them out.
+It has been removed from git using `git update-index --skip-worktree contact.tex` and `git update-index --assume-unchanged contact.tex`.
 
 ### Updates
 
