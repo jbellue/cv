@@ -10,6 +10,13 @@ Having it _almost_ public on a repo means I can send a link to anyone, and they'
 
 Overkill? Yes. Awesome? Yes!
 
+### The contact.tex file
+
+There's a seemingly useless file in there... What's the point?
+
+That file is only empty on that repo. On my machine, it is fully populated, with phone number, address, etc.
+I didn't really feel like it was a great idea to advertise these online, so I took them out.
+
 ### Updates
 
 * Added very basic URL parsing, to directly go to the French version ([https://jbellue.github.io/cv/?lang=fr](https://jbellue.github.io/cv/?lang=fr))
