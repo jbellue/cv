@@ -30,43 +30,48 @@
     \centerline{\Huge{#1}}
 }
 
-\newcommand{\contact}[5]{
-\vspace{5mm}
-\begin{minipage}{0.45\linewidth}
+\newcommand{\contact}[6]{
 \ifx&#1&
 \else
-  #1
+  \vspace*{5.75pt}
+  \centerline{\huge{#1}}
 \fi
+\vspace{5mm}
+\begin{minipage}{0.45\linewidth}
 \ifx&#2&
 \else
-  \ifx&#1& %if there was a first line, add a return
-  \else
-    \\
-  \fi
   #2
 \fi
 \ifx&#3&
 \else
-  \ifx&#2&   % if there was no previous argument,
-    \ifx&#1& % add a new line
+  \ifx&#2& %if there was a first line, add a return
+  \else
+    \\
+  \fi
+  #3
+\fi
+\ifx&#4&
+\else
+  \ifx&#3&   % if there was no previous argument,
+    \ifx&#2& % add a new line
     \else
       \\
     \fi
   \else
     \\
   \fi
-  #3
+  #4
 \fi
 \end{minipage}
 \begin{minipage}{0.45\linewidth}
   \begin{tabular}{ll}
-    \ifx&#4&
-    \else
-    & \href{mailto:#4}{\tt #4} \\
-    \fi
     \ifx&#5&
     \else
-    & #5
+    & \href{mailto:#5}{\tt #5} \\
+    \fi
+    \ifx&#6&
+    \else
+    & #6
     \fi
   \end{tabular}
 \end{minipage}
