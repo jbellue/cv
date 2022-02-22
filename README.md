@@ -1,7 +1,5 @@
 # Julien Bellue's CV
 
-[![CircleCI](https://circleci.com/gh/jbellue/cv/tree/master.svg?style=shield)](https://circleci.com/gh/jbellue/cv/tree/master)
-
 ## What this is
 
 Instead of struggling to keep a CV up to date, and failing to properly update it when I could, I decided to write my CV in LaTeX. This allows it to be committed on a repo, and to be easily updatable (also, it's so pretty now!).

@@ -1,0 +1,27 @@
+name: Compile Latex and Release PDF
+
+on: push
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up environment
+        run: sudo apt-get install -y --no-install-recommends latexmk chktex texlive-formats-extra texlive-lang-french make
+
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+
+      - name: Compile LaTeX document
+        run: chktex cv-en.tex cv-fr.tex cv.cls
+
+      - name: Get the LaTex files to PDF
+        run: make
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            output/cv-en.pdf
+            output/cv-fr.pdf
+          tag_name: "latest"
