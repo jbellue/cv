@@ -12,6 +12,9 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
 
+      - name: Create output directory
+        run: mkdir output
+
       - name: Compile LaTeX document
         run: chktex cv-en.tex cv-fr.tex cv.cls
 
