@@ -1,5 +1,5 @@
 PAPER=main.tex
-OUTPUT_DIR=output
+OUTPUT_DIR=docs/assets
 OUTPUT_EN=cv-en
 OUTPUT_FR=cv-fr
 
