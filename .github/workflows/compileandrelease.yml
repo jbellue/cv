@@ -33,8 +33,8 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add output/cv-en.pdf
-          git add output/cv-fr.pdf
+          git add docs/assets/cv-en.pdf
+          git add docs/assets/cv-fr.pdf
           git commit -m "Add built pdf files"
 
       - name: Push changes
