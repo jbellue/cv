@@ -2,8 +2,8 @@ name: Compile Latex and Release PDF
 
 on:
   push:
-    paths-ignore:
-      - "docs/assets/**"
+    branch:
+      - master
 
 jobs:
   build_latex:
@@ -25,19 +25,20 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            docs/assets/cv-en.pdf
-            docs/assets/cv-fr.pdf
+            cv-en.pdf
+            cv-fr.pdf
           tag_name: "latest"
 
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add docs/assets/cv-en.pdf
-          git add docs/assets/cv-fr.pdf
+          git add cv-en.pdf
+          git add cv-fr.pdf
           git commit -m "Add built pdf files"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
